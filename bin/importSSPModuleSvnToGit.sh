@@ -26,12 +26,13 @@ function createFilteredModule {
 	echo "Filter only ${MODULE_PATH} dir"
 	git filter-branch -f --subdirectory-filter ${MODULE_PATH} --prune-empty -- --all
 
+	# Note: Temporary disabled to speed up development, should be enabled	
 	# Remove all Svn id's (caused by using an svn export) to reduce the number of differences between OpenConext and OFFICIAL versions
 	echo "Remove svn id's"
 	#git filter-branch -f --tree-filter "grep -rl '\$Id' --include=*.php | xargs sed -i s/\\\$Id[^\$]*\\\\$/\\\$Id\\\$/g > /dev/null 2>&1 || true" -- --all
 }
 
-# Enable this once to import the current state of the SSP svn repo, this takes a few minutes so it is disabled by default
+# Note: Enable this once to import the current state of the SSP svn repo, this takes a few minutes so it is disabled by default
 #importSvnToGit
 
 cd $SSP_DIR
