@@ -1,6 +1,4 @@
 #!/bin/bash
-# Inspired by: http://jasonkarns.com/blog/merge-two-git-repositories-into-one/
-
 CURRENT_DIR=$(pwd);
 
 # Create import dir
