@@ -33,8 +33,8 @@ function createFilteredModule {
 	#git filter-branch -f --tree-filter "grep -rl '\$Id' --include=*.php | xargs sed -i s/\\\$Id[^\$]*\\\\$/\\\$Id\\\$/g > /dev/null 2>&1 || true" -- --all
 }
 
+# Enable this once to import the current state of the SSP svn repo, this takes a few minutes so it is disabled by default
 #importSvnToGit
-#createFilteredModule 'authorize'
 
 cd $SSP_DIR
 for modulePath in modules/*
