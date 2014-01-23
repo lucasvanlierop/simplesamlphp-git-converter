@@ -27,8 +27,7 @@ function createFilteredModule {
 	git filter-branch -f --subdirectory-filter ${MODULE_PATH} --prune-empty -- --all
 
 	# Note: Temporary disabled to speed up development, should be enabled	
-	# Remove all Svn id's (caused by using an svn export) to reduce the number of differences between OpenConext and OFFICIAL versions
-	echo "Remove svn id's"
+	# Remove all Svn id's (caused by using an svn export)	echo "Remove svn id's"
 	#git filter-branch -f --tree-filter "grep -rl '\$Id' --include=*.php | xargs sed -i s/\\\$Id[^\$]*\\\\$/\\\$Id\\\$/g > /dev/null 2>&1 || true" -- --all
 }
 
