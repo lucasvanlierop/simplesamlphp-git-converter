@@ -32,6 +32,15 @@ function createFilteredModule {
 	#git filter-branch -f --tree-filter "grep -rl '\$Id' --include=*.php | xargs sed -i s/\\\$Id[^\$]*\\\\$/\\\$Id\\\$/g > /dev/null 2>&1 || true" -- --all
 }
 
+# Inspired by: http://stackoverflow.com/questions/2423777/is-it-possible-to-create-a-remote-repo-on-github-from-the-cli-without-ssh
+function createGithubRepo {
+	moduleName=$1
+	repoName="module-$NAME" 
+	curl -F 'login=simplesamlphp' -F 'token=XXX' https://github.com/api/v2/json/repos/create -F 'name=$repoName' -F 'description=SimpleSamlPhp module $moduleName'
+	git remote add origin git@github.com:simplesamlphp/${moduleName}.git
+	git push origin master
+}
+
 # Note: Enable this once to import the current state of the SSP svn repo, this takes a few minutes so it is disabled by default
 #importSvnToGit
 
